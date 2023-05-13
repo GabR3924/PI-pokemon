@@ -1,0 +1,21 @@
+ .secction{
+    height: 100vh;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    /* background-image: url(../img/varios.jpg); */
+}
+
+.img{
+    width: 40rem;
+    height: 23rem;
+    background-image: url(../../img/varios.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.text{
+    background-color: violet;
+    height: 20rem;
+    width: 40rem;
+}

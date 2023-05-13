@@ -1,0 +1,28 @@
+.section{
+    height: 100vh;
+    width: 100%;
+    background: rgb(226, 137, 43);
+    background-image: url(../img/poke.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    /* overflow-x: none ; */ 
+}
+
+.button{
+    display: flex;
+    margin-top: 33%;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    height: 3rem;
+    width: 8rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    color:  rgb(226, 137, 43);
+    font-weight: bold;
+    border-color: rgb(58, 140, 255);
+    cursor: pointer;
+}

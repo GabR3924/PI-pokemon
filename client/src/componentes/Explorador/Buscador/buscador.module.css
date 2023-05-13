@@ -1,0 +1,27 @@
+.section {
+  background-color: violet;
+  height: 30rem;
+  width: 23rem;
+  border: 3px solid black;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buscador {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 4rem;
+  height: 1.8rem;
+  font-size: small;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,22 @@
+.nav{
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    
+    /* position: absolute; */
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.icon{
+    font-size: 5rem;
+    color: rgb(228, 255, 22);
+}
