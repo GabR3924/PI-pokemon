@@ -1,6 +1,9 @@
 .section{
-    background-color: brown;
-    border: 3px solid black;
-    height: 50rem;
-    width: 48rem;
+    height: 100%;
+    width: 68%;
+}
+
+.Cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
 }

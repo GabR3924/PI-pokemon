@@ -3,5 +3,8 @@
     padding-right: 3rem;
     display: flex;
     justify-content: space-between;
-    border: 3px solid black;
+}
+
+.section{
+    background: rgb(226, 137, 43);
 }

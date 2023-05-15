@@ -4,13 +4,13 @@ import Nav from '../Nav/Nav'
 import Buscador from './Buscador/Buscador'
 import Cards from './Cards/Cards'
 
-const explorador = () => {
+const explorador = ({ onSearch, results }) => {
   return (
-    <div className={css.secction}>
+    <div className={css.section}>
         <Nav/>
         <div className={css.explorador}>
-        <Buscador/>
-        <Cards/>
+        <Buscador onSearch = {onSearch}/>
+        <Cards results = {results}/>
         </div>
     </div>
   )

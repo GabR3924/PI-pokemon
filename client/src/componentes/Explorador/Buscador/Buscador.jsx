@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./buscador.module.css";
 
-const Buscador = () => {
+const Buscador = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSearch(query);
+  }
+
   return (
     <div className={css.section}>
       <div className={css.buscador}>
-        <form>
-          <input type="text" placeholder="Buscar..." />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Buscar..."
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+          />
 
           <div className={css.options}>
             <button type="button">Todos</button>
@@ -21,3 +33,4 @@ const Buscador = () => {
 };
 
 export default Buscador;
+
