@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import css from './buscador.module.css';
+import { GoArrowSmallLeft } from 'react-icons/go'
+import { GoArrowSmallRight } from 'react-icons/go'
 
 const Buscador = ({ onSearch, page, setPage }) => {
   const [query, setQuery] = useState('');
@@ -29,6 +31,7 @@ const Buscador = ({ onSearch, page, setPage }) => {
             placeholder="Buscar..."
             value={query}
             onChange={(event) => setQuery(event.target.value)}
+            className={css.input}
           />
 
           <div className={css.options}>
@@ -40,8 +43,8 @@ const Buscador = ({ onSearch, page, setPage }) => {
         </form>
 
         <div className={css.page}>
-          <button onClick={handlePreviousPage}>Previous page</button>
-          <button onClick={handleNextPage}>Next Page</button>
+          <button onClick={handlePreviousPage}><GoArrowSmallLeft/></button>
+          <button onClick={handleNextPage}><GoArrowSmallRight/></button>
         </div>
       </div>
     </div>

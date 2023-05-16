@@ -1,23 +1,50 @@
 .section {
-  background-color: rgba(255, 255, 255, 0.392);
-  height: 30rem;
-  width: 20rem;
-  border: 3px solid rgba(255, 255, 255, 0.793);
-  border-radius: 1.5rem;
+  background-color: rgb(23, 6, 116);
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  width: 20%;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
   display: flex;
   justify-content: space-around;
+  padding: 0.5rem;
 }
 
-.buscador {
-  display: block;
-  text-align: center;
-  margin-bottom: 10px;
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: -0.5rem;
+  height: 2rem;
+  width: 100%;
+  border-radius: 2rem;
+  border: none;
 }
 
-button {
+.buscador button {
   width: 4rem;
   height: 1.8rem;
   font-size: small;
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  top: 70%;
+}
+.page button{
+  color: white;
+  background: none;
+  border: none;
+  font-size: 5rem;
+  cursor: pointer;
 }
 
 .options {
