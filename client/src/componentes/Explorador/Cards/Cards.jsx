@@ -2,7 +2,8 @@ import React from 'react'
 import css from './Cards.module.css'
 import Card from '../Card/Card.jsx'
 
-const Cards = ({ results }) => {
+const Cards = ({ results}) => {
+ 
   return (
     <div className={css.section}>
       <div className={css.Cards}>
@@ -18,6 +19,7 @@ const Cards = ({ results }) => {
           />
         ))}
       </div>
+      
     </div>
   )
 }
