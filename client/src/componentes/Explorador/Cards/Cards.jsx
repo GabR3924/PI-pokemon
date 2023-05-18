@@ -8,7 +8,7 @@ const Cards = ({ results}) => {
     <div className={css.section}>
       <div className={css.Cards}>
         {console.log(results)}
-        {results && results.pokemons.map(({ id, name, image, height, weight }) => (
+        {results && results.pokemons.map(({ id, name, image, height, weight, types }) => (
           <Card
             key={id}
             id={id}
@@ -16,6 +16,7 @@ const Cards = ({ results}) => {
             image={image}
             height={height}
             weight={weight}
+            types={types}
           />
         ))}
       </div>

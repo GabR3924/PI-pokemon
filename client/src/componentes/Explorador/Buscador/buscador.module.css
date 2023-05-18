@@ -7,29 +7,72 @@
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   display: flex;
-  justify-content: space-around;
-  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: start;
+  padding: 1rem;
+}
+
+.home{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.icon{
+  color: aliceblue;
+}
+
+input{
+  padding: .5rem ;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
 }
 
 .input {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: -0.5rem;
+  margin-left: .5rem;
   height: 2rem;
-  width: 100%;
+  width: 90%;
   border-radius: 2rem;
   border: none;
 }
 
-.buscador button {
+.search{
+  background-color: transparent;
+  border: none;
+  position: relative;
+  display: flex;
+  top: -3.4rem;
+  left: 12rem;
+  cursor: pointer;
+}
+.icon2{
+  color: black;
+  font-size: 1.5rem;
+}
+
+/* .buscador button {
   width: 4rem;
   height: 1.8rem;
   font-size: small;
   display: flex;
   align-items: center;
+} */
+
+.buscador button{
+  background-color: transparent;
+  border: none;
+  color: white;
 }
 
 .page {
@@ -37,7 +80,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  top: 70%;
+  top: 20%;
 }
 .page button{
   color: white;
@@ -49,6 +92,7 @@
 
 .options {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }

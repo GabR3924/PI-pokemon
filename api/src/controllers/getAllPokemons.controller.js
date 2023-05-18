@@ -14,7 +14,9 @@ const getAllPokemons = async (name, offset) => {
         image: pokemonData.sprites.other['official-artwork'].front_default,
         name: pokemonData.name,
         height: pokemonData.height,
-        weight: pokemonData.weight
+        weight: pokemonData.weight,
+        types: pokemonData.types.map(typeObj => typeObj.type.name)
+        //debo iterar aqui pq el pokemon puede tener mas de de un typo, en cambio imagen no 
       };
     })
   );

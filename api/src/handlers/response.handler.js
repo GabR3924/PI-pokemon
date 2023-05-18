@@ -1,6 +1,7 @@
 const getAllPokemons = require('../controllers/getAllPokemons.controller.js')
 const getPokemonById = require('../controllers/getById.controller.js')
 const {createPokemon, getDbPokemons} = require('../controllers/crud.controller.js')
+const getAllTypes = require('../controllers/getAllTypes.controller.js')
 
 const getAll = async (req, res, next) => {
     const { name, offset} = req.query;
@@ -46,9 +47,21 @@ const create = async(req, res, next) => {
   
 }
 
+const getTypes = async(req, res, next) => {
+  try {
+    const types = await getAllTypes()
+
+    res.json(types);
+
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
     getAll,
     getById,
     dbPokemons,
-    create
+    create,
+    getTypes
 };
