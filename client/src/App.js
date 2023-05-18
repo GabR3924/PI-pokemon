@@ -3,6 +3,7 @@ import './App.css';
 import Hero from './componentes/Hero/Hero';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Explorador from './componentes/Explorador/explorador';
+import CardDetail  from './componentes/Explorador/CardDetail/CardDetail'
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               />
             }
           />
+          <Route path='/card/detail' element={<CardDetail/>}/>
         </Routes>
       </BrowserRouter>
     </div>
