@@ -4,7 +4,9 @@ import Hero from './componentes/Hero/Hero';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Explorador from './componentes/Explorador/explorador';
 import CardDetail  from './componentes/Explorador/CardDetail/CardDetail'
+import Creados from './componentes/Explorador/Creados/Creados';
 import { useState, useEffect } from 'react';
+import Crear from './componentes/Explorador/Crear/Crear'
 
 function App() {
   const [results, setResults] = useState(null);
@@ -42,6 +44,9 @@ function App() {
             }
           />
           <Route path='/card/detail' element={<CardDetail/>}/>
+          <Route path='/creados' element={<Creados/>}/>
+          <Route path='/creados/new' element={<Crear/>}/>
+
         </Routes>
       </BrowserRouter>
     </div>
