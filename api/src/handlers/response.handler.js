@@ -4,9 +4,10 @@ const {createPokemon, getDbPokemons} = require('../controllers/crud.controller.j
 const getAllTypes = require('../controllers/getAllTypes.controller.js')
 
 const getAll = async (req, res, next) => {
-    const { name, offset} = req.query;
+    const { name, offset, limit } = req.query;
+    console.log(name, offset,limit)
     try {
-      const pokemons = await getAllPokemons(name, offset);
+      const pokemons = await getAllPokemons(name, offset, limit);
       res.json(pokemons);
     } catch (error) {
       next(error);
