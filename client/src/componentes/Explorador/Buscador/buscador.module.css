@@ -1,15 +1,15 @@
 .section {
-  background-color: rgb(23, 6, 116);
+  background-color: #ffffff;
   position: fixed;
   height: 100vh;
   left: 0;
   width: 20%;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
   padding: 1rem;
+  color: black;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .home{
@@ -24,7 +24,7 @@
   margin: 0 auto;
 }
 .icon{
-  color: aliceblue;
+  color: rgb(0, 0, 0);
 }
 
 input{
@@ -38,13 +38,14 @@ input{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  /* margin-top: .1rem; */
   margin-bottom: 1rem;
   margin-left: .5rem;
   height: 2rem;
   width: 90%;
   border-radius: 2rem;
   border: none;
+  background-color: rgb(239, 239, 239);
 }
 
 .search{
@@ -72,7 +73,9 @@ input{
 .buscador button{
   background-color: transparent;
   border: none;
-  color: white;
+  color: rgb(75, 74, 74);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5rem;
 }
 
 .page {
@@ -80,10 +83,10 @@ input{
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  top: 20%;
+  bottom: -50%;
 }
 .page button{
-  color: white;
+  color: rgb(66, 66, 66);
   background: none;
   border: none;
   font-size: 5rem;
@@ -95,4 +98,6 @@ input{
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  font-size: 2rem;
+  gap: 1rem;
 }

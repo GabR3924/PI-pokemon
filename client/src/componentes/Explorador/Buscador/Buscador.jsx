@@ -44,8 +44,6 @@ const Buscador = ({ onSearch, page, setPage }) => {
             <button type="button">Fuego</button>
             <button type="button">Agua</button>
             <button type="button"> <Link to='/creados'>Creados</Link></button>
-            <button type="button">Log in</button>
-            <button type="button">Sing in</button>
           </div>
         </form>
 

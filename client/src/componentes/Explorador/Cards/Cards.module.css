@@ -1,9 +1,12 @@
 .section{
     height: 100%;
     width: 100%;
-    margin-left: 30%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-left: 23%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 2rem;
+    border-radius: 4rem;
+    background-color: rgb(239, 239, 239);
     /* border: 3px solid black; */
 }
 
