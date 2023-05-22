@@ -1,28 +1,69 @@
 .section{
     height: 100vh;
     width: 100%;
-    background: rgb(226, 137, 43);
-    background-image: url(../img/poke.png);
-    background-position: center;
-    background-repeat: no-repeat;
+    font-family: 'Roboto Condensed', sans-serif;
+    background:#ffc802	
+    /* background-image: url(../img/poke.png); */
+    /* background-position: center;
+    background-repeat: no-repeat; */
     /* background-size: contain; */
     /* overflow-x: none ; */ 
 }
 
-.button{
-    display: flex;
-    margin-top: 33%;
-    align-items: center;
-    justify-content: center;
+.img{
+    position: absolute;
+    height: 80%;
+    width: 45%;
+    background-image: url(../img/pika.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: .5rem;
+    right: 5rem;
+
 }
 
-button{
+.img2{
+    position: absolute;
+    height: 25%;
+    width: 25%;
+    background-image: url(../img/pngwing.com.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 19rem;
+    left: 10rem;
+}
+
+.landing{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18rem;
+    color: white;   
+    letter-spacing: -1rem;
+    margin-top: 1rem;
+    margin-bottom:4rem ;
+}
+
+ .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} 
+
+.button button{
+    border: none;
+    background: #140000;
     height: 3rem;
     width: 8rem;
     border-radius: .5rem;
     font-size: 1.5rem;
-    color:  rgb(226, 137, 43);
     font-weight: bold;
-    border-color: rgb(58, 140, 255);
     cursor: pointer;
+}
+
+a{
+    color:#e7b501	;	
+    text-decoration: none;
 }

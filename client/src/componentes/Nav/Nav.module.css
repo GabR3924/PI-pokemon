@@ -3,9 +3,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
-    
+    padding-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: 'Roboto Condensed', sans-serif;;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #140000;
     /* position: absolute; */
+}
+
+.logo{
+    display: flex;
+    align-items: center;gap: .5rem;
+}
+
+.logo .icon{
+    font-size: 2.5rem;
+    color: #140000;
 }
 
 .list{
@@ -16,7 +31,3 @@
     list-style: none;
 }
 
-.icon{
-    font-size: 5rem;
-    color: rgb(228, 255, 22);
-}

@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route
-            path="/explorar"
+            path="/home"
             element={
               <Explorador
                 onSearch={handleSearch}

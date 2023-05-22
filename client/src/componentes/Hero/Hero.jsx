@@ -9,12 +9,14 @@ const Hero = () => {
     <div className={css.section}>
       <Nav />
       <div className={css.hero}>
+        <div className={css.landing}>POKEMON</div>
         <div className={css.img}></div>
+        <div className={css.img2}></div>
         <div className={css.button}>
-          <button><Link to='/explorar'>Explorar</Link></button>
+          <button><Link to='/home'>Home</Link></button>
         </div>
       </div>
-      <Info/>
+      {/* <Info/> */}
     </div>
   );
 };

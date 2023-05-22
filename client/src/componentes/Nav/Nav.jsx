@@ -1,19 +1,19 @@
 import React from 'react'
 import css from './Nav.module.css'
-import {SiPokemon} from 'react-icons/si'
+import {MdOutlineCatchingPokemon} from 'react-icons/md'
 
 
 const Nav = () => {
   return (<>
     <div className={css.nav}> 
     <div>
-        <h1><SiPokemon className={css.icon}/></h1>
+        <div className={css.logo}><MdOutlineCatchingPokemon className={css.icon}/>Pokemon</div>
+      
     </div>
     <ul className={css.list}>
         <li>Home</li>
-        <li>Explorar</li>
-        <li>Registrarte</li>
-        <li>Entrar</li>
+        <li>Creados</li>
+        
     </ul>
     </div>
     </>
