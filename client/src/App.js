@@ -20,7 +20,8 @@ function App() {
   const handleSearch = (query) => {
     setSearchQuery(query);
     const offset = (page - 1) * 12;
-    let url = `http://localhost:3001/pokemon?offset=${offset}&limit=12`;
+    const limit = 12;
+    let url = `http://localhost:3001/pokemon?offset=${offset}&limit=${limit}`;
     if (query) {
       url += `&name=${query}`;
     }

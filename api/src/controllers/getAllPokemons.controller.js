@@ -21,9 +21,9 @@ const getAllPokemons = async (name, offset, limit) => {
     })
   );
 
-  const dbPokemons = await Pokemon.findAll();
+  // const dbPokemons = await Pokemon.findAll();
 
-  const allPokemons = [...apiPokemons, ...dbPokemons];
+  const allPokemons = [...apiPokemons];
 
 //   allPokemons.sort((a, b) => a.name.localeCompare(b.name));
   if (name) {
