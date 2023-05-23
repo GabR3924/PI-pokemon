@@ -1,6 +1,6 @@
 const getAllPokemons = require('../controllers/getAllPokemons.controller.js')
 const getPokemonById = require('../controllers/getById.controller.js')
-const {createPokemon, getDbPokemons} = require('../controllers/crud.controller.js')
+const {createPokemon, getDbPokemons, uploadFile} = require('../controllers/crud.controller.js')
 const getAllTypes = require('../controllers/getAllTypes.controller.js')
 
 const getAll = async (req, res, next) => {
@@ -48,6 +48,21 @@ const create = async(req, res, next) => {
   
 }
 
+const upload = async (req, res, next) => {
+  const file =req.file
+  console.log("img", file)
+ try {
+  if (!file || !file.path) {
+    console.log('No se recibió ningún archivo o el archivo no contiene datos');
+    res.status(400).send('No se recibió ningún archivo o el archivo no contiene datos');
+    return;
+  }
+ await uploadFile(file);
+ } catch (error) {
+ next(error);
+ }
+}
+
 const getTypes = async(req, res, next) => {
   try {
     const types = await getAllTypes()
@@ -64,5 +79,6 @@ module.exports = {
     getById,
     dbPokemons,
     create,
-    getTypes
+    getTypes,
+    upload
 };
