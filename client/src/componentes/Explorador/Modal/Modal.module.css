@@ -1,7 +1,7 @@
 /* Estilos para la ventana modal */
 .modal {
     display: flex; /* La ventana modal está oculta por defecto */
-    position: absolute; /* La ventana modal se fija en la pantalla */
+    position: fixed; /* La ventana modal se fija en la pantalla */
     z-index: 1; /* La ventana modal se muestra por encima del contenido */
     left: 0;
     top: 0;
@@ -12,11 +12,14 @@
   }
   
   .modalContent {
+    /* display: flex;
+    align-items: flex-end;
+    justify-content: end; */
     background-color: #fefefe;
-    margin: 15% auto; /* Centrar verticalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho de la ventana modal */
+    border-top-left-radius: 5rem;
+    margin-left: 60%;
+    height: 100%;
+    width: 40%; 
   }
   
   /* Botón para cerrar la ventana modal */
