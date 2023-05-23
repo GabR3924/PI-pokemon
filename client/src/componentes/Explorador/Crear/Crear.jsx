@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import css from './Crear.module.css'
 
 function Crear() {
   const [name, setName] = useState("");
@@ -32,6 +33,7 @@ function Crear() {
   };
 
   return (
+    <div className={css.section}>
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -83,6 +85,7 @@ function Crear() {
       />
       <button type="submit">Crear</button>
     </form>
+    </div>
   );
 }
 

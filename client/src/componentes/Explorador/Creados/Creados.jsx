@@ -6,14 +6,18 @@ import Nav from "../../Nav/Nav.jsx";
 import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import CardDetail from "../CardDetail/CardDetail.jsx";
+import Crear from "../Crear/Crear";
 
 const Creados = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+  const handleOpenCreateModal = () => setIsCreateModalOpen(true);
+  const handleCloseCreateModal = () => setIsCreateModalOpen(false);
 
   useEffect(() => {
     axios.get("http://localhost:3001/pokemondb").then((response) => {
@@ -26,7 +30,7 @@ const Creados = () => {
       <Nav />
       <div className={css.pokedb}>
         <div className={css.create}>
-          <Link to="/creados/new">Crear</Link>
+          <button onClick={handleOpenCreateModal}>Crear</button>
         </div>
         <div className={css.db}>
           {/* {console.log(pokemons)} */}
@@ -52,6 +56,9 @@ const Creados = () => {
               image={selectedPokemon.image}
             />
           )}
+        </Modal>
+        <Modal isOpen={isCreateModalOpen} onClose={handleCloseCreateModal}>
+          <Crear />
         </Modal>
       </div>
     </div>

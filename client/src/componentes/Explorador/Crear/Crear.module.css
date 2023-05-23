@@ -1,0 +1,17 @@
+.section{
+    margin: 2rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+input{
+    height: 20%;
+    width: 60%;
+    border: 1px solid grey;
+    border-radius: 5rem;
+    margin: .5rem;
+}
