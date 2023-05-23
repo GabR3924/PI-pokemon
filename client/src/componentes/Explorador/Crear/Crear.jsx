@@ -15,6 +15,7 @@ function Crear() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log('Enviando datos al servidor:', { name, image, vida, ataque, defensa, velocidad, altura, peso });
 
     axios
       .post('http://localhost:3001/pokemon/new', {
@@ -34,16 +35,19 @@ function Crear() {
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    console.log(file)
+
     const formData = new FormData();
     formData.append('file', file);
-    console.log(formData)
+
     await axios.post('http://localhost:3001/upload', formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     }).then((response) => {
+      console.log('Recibido del servidor:', response.data);
       setImage(response.data.imageUrl);
+      console.log('Estado actualizado:', image);
+  
     });
   };
 

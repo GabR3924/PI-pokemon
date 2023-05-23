@@ -1,8 +1,8 @@
 const { Pokemon } = require("../db.js");
 const AWS = require("aws-sdk");
 const { ACCESS_KEY_ID, SECRET_ACCESS_KEY, REGION, BUCKET_NAME } = process.env;
-const fs = require('fs');
-const util = require('util');
+const fs = require("fs");
+const util = require("util");
 
 const s3 = new AWS.S3({
   accessKeyId: ACCESS_KEY_ID,
@@ -21,10 +21,10 @@ const uploadFile = async (file) => {
   };
   s3.upload(params, (err, data) => {
     if (err) {
-      console.log('Error al subir el archivo:', err);
+      console.log("Error al subir el archivo:", err);
       throw err;
     } else {
-      console.log('Archivo subido con éxito:', data.Location);
+      console.log("Archivo subido con éxito:", data.Location);
     }
   });
 };
