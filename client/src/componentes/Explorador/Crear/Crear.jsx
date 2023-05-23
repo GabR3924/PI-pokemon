@@ -42,8 +42,7 @@ function Crear() {
         onChange={(event) => setName(event.target.value)}
       />
       <input
-        type="text"
-        placeholder="Imagen"
+        type="file"
         value={image}
         onChange={(event) => setImage(event.target.value)}
       />
