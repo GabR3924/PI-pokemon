@@ -17,7 +17,7 @@ router.get('/pokemon/:id', getById)
 
 router.get('/pokemondb', dbPokemons)
 
-router.post('/pokemon/new', upload.none() ,create)
+router.post('/pokemon/new', upload.single('image') ,create)
 
 router.post('/upload', upload.single('file'), uploadHandler);
 
