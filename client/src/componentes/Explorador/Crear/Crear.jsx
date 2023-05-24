@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import css from "./Crear.module.css";
 
 function Crear() {
@@ -12,6 +12,10 @@ function Crear() {
   const [altura, setAltura] = useState("");
   const [peso, setPeso] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    console.log("Valor actual de file:", file);
+   }, [file]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,12 +49,18 @@ function Crear() {
     formData.append('file', file);
     console.log('formData', formData)
   
-    const response = await axios.post('http://localhost:3001/upload', formData, {
+    try {
+      const response = await axios.post('http://localhost:3001/upload', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data',
       },
-    });
-    setFile(response.data.filePath);
+      });
+      console.log("respuesta=",response)
+      setFile(response.data);
+
+     } catch (error) {
+      console.log("Error al hacer la petición:", error);
+     }
   };
 
   return (

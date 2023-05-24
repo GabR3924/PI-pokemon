@@ -36,8 +36,8 @@ const dbPokemons = async (req, res, next) => {
 }
 
 const create = async(req, res, next) => {
-  const { name, vida, ataque, defensa, velocidad, altura, peso } = req.body;
-  const image = req.file.path
+  const { name, image, vida, ataque, defensa, velocidad, altura, peso } = req.body;
+  // const image = req.file
   console.log('backIMG=', image)
 
   try {
@@ -52,7 +52,7 @@ const create = async(req, res, next) => {
 
 const upload = async (req, res, next) => {
   const file =req.file
-  // console.log("img", file)
+  console.log("img", file)
  try {
   if (!file || !file.path) {
     console.log('No se recibió ningún archivo o el archivo no contiene datos');
@@ -60,7 +60,7 @@ const upload = async (req, res, next) => {
     return;
   }
    const response = await uploadFile(file);
-  //  console.log('back',response.imageUrl)
+   console.log('imageurl',response.imageUrl)
   res.json(response.imageUrl);
  } catch (error) {
  next(error);
