@@ -19,15 +19,24 @@ const uploadFile = async (file) => {
     Key: file.originalname,
     Body: fileContent,
   };
-  s3.upload(params, (err, data) => {
-    if (err) {
-      console.log("Error al subir el archivo:", err);
-      throw err;
-    } else {
-      console.log("Archivo subido con éxito:", data.Location);
-    }
-  });
+  try {
+    const data = await new Promise((resolve, reject) => {
+      s3.upload(params, (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      });
+    });
+    console.log("Archivo subido con éxito:", data.Location);
+    return { imageUrl: data.Location };
+  } catch (err) {
+    console.log("Error al subir el archivo:", err);
+    throw err;
+  }
 };
+
 
 const getDbPokemons = async () => {
   const pokemons = await Pokemon.findAll();

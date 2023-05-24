@@ -8,9 +8,6 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
 
-router.post('/upload', upload.single('file'), uploadHandler);
-
-
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/pokemon', getAll);
@@ -20,9 +17,9 @@ router.get('/pokemon/:id', getById)
 
 router.get('/pokemondb', dbPokemons)
 
-router.post('/pokemon/new', create)
+router.post('/pokemon/new', upload.none() ,create)
 
-// router.post('/upload', upload.single('file'), upload);
+router.post('/upload', upload.single('file'), uploadHandler);
 
 router.get('/types', getTypes)
 

@@ -50,14 +50,16 @@ const create = async(req, res, next) => {
 
 const upload = async (req, res, next) => {
   const file =req.file
-  console.log("img", file)
+  // console.log("img", file)
  try {
   if (!file || !file.path) {
     console.log('No se recibió ningún archivo o el archivo no contiene datos');
     res.status(400).send('No se recibió ningún archivo o el archivo no contiene datos');
     return;
   }
- await uploadFile(file);
+   const response = await uploadFile(file);
+   console.log('back',response.imageUrl)
+  res.json(response.imageUrl);
  } catch (error) {
  next(error);
  }

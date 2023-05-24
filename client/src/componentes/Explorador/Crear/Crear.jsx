@@ -1,54 +1,56 @@
-import axios from 'axios';
-import { useState } from 'react';
-import css from './Crear.module.css';
+import axios from "axios";
+import { useState } from "react";
+import css from "./Crear.module.css";
 
 function Crear() {
-  const [name, setName] = useState('');
-  const [image, setImage] = useState('');
-  const [vida, setVida] = useState('');
-  const [ataque, setAtaque] = useState('');
-  const [defensa, setDefensa] = useState('');
-  const [velocidad, setVelocidad] = useState('');
-  const [altura, setAltura] = useState('');
-  const [peso, setPeso] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [file, setFile] = useState(null);
+  const [vida, setVida] = useState("");
+  const [ataque, setAtaque] = useState("");
+  const [defensa, setDefensa] = useState("");
+  const [velocidad, setVelocidad] = useState("");
+  const [altura, setAltura] = useState("");
+  const [peso, setPeso] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Enviando datos al servidor:', { name, image, vida, ataque, defensa, velocidad, altura, peso });
 
-    axios
-      .post('http://localhost:3001/pokemon/new', {
-        name,
-        image,
-        vida,
-        ataque,
-        defensa,
-        velocidad,
-        altura,
-        peso,
-      })
-      .then((response) => {
-        setMessage('Pokémon creado correctamente');
-      });
+    console.log('name', name,'image', file,'vida', vida, 'ataque', ataque,'defensa', defensa, 'velocidad', velocidad, 'altura', altura, 'peso', peso)
+  
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('image', file);
+    formData.append('vida', vida);
+    formData.append('ataque', ataque);
+    formData.append('defensa', defensa);
+    formData.append('velocidad', velocidad);
+    formData.append('altura', altura);
+    formData.append('peso', peso);
+
+    console.log('formData',formData)
+  
+    await axios.post('http://localhost:3001/pokemon/new', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    setMessage('Pokémon creado correctamente');
   };
-
+  
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-
+    setFile(file)
     const formData = new FormData();
     formData.append('file', file);
-
-    await axios.post('http://localhost:3001/upload', formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    }).then((response) => {
-      console.log('Recibido del servidor:', response.data);
-      setImage(response.data.imageUrl);
-      console.log('Estado actualizado:', image);
+    console.log('formData', formData)
   
+    const response = await axios.post('http://localhost:3001/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     });
+    setFile(response.data.filePath);
   };
 
   return (
@@ -92,7 +94,7 @@ function Crear() {
           onChange={(event) => setAltura(event.target.value)}
         />
         <input
-          type='number'
+          type="number"
           placeholder="Peso"
           value={peso}
           onChange={(event) => setPeso(event.target.value)}
