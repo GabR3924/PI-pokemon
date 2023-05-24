@@ -5,7 +5,7 @@ const getAllTypes = require('../controllers/getAllTypes.controller.js')
 
 const getAll = async (req, res, next) => {
     const { name, offset, limit } = req.query;
-    console.log(name, offset,limit)
+    // console.log(name, offset,limit)
     try {
       const pokemons = await getAllPokemons(name, offset, limit);
       res.json(pokemons);
