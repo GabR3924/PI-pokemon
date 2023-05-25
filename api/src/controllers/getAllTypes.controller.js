@@ -8,8 +8,9 @@ const getAllTypes = async () => {
   await Types.bulkCreate(types);
 
   const typesPokemon = await Types.findAll();
-
+  // console.log("getall=", typesPokemon)
   return {types: typesPokemon}
+
 }
 
 module.exports= getAllTypes;

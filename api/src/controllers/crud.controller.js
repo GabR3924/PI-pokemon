@@ -1,4 +1,4 @@
-const { Pokemon } = require("../db.js");
+const { Pokemon, Types } = require("../db.js");
 const AWS = require("aws-sdk");
 const { ACCESS_KEY_ID, SECRET_ACCESS_KEY, REGION, BUCKET_NAME } = process.env;
 const fs = require("fs");
