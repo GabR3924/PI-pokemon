@@ -13,7 +13,7 @@ function Crear() {
   const [peso, setPeso] = useState("");
   const [message, setMessage] = useState("");
   const [types, setTypes] = useState([]);
-  const [pokemonId, setPokemonId] = useState(null);
+  // const [pokemonId, setPokemonId] = useState(null);
 
   useEffect(() => {
     const getTypes = async () => {
@@ -23,10 +23,6 @@ function Crear() {
     getTypes();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("Types:", types);
-  // }, [types]);
-
   useEffect(() => {
     console.log("Valor actual de file:", file);
   }, [file]);
@@ -34,24 +30,22 @@ function Crear() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(
-      "name",
-      name,
-      "image",
-      file,
-      "vida",
-      vida,
-      "ataque",
-      ataque,
-      "defensa",
-      defensa,
-      "velocidad",
-      velocidad,
-      "altura",
-      altura,
-      "peso",
-      peso
-    );
+    if (
+      !name ||
+      !vida ||
+      !ataque ||
+      !defensa ||
+      !velocidad ||
+      !altura ||
+      !peso
+    ) {
+      setMessage("Por favor complete todos los campos");
+      return;
+    }
+    if (!file) {
+      setMessage("Por favor seleccione un archivo antes de crear el Pokémon");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", name);
@@ -65,18 +59,22 @@ function Crear() {
 
     console.log("formData", formData);
 
-    const response = await axios.post("http://localhost:3001/pokemon/new", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    setPokemonId(response.data.data.id);
+    const response = await axios.post(
+      "http://localhost:3001/pokemon/new",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    // setPokemonId(response.data.data.id);
     setMessage("Pokémon creado correctamente");
   };
 
-  useEffect(() => {
-    console.log("Valor actual de pokemonId:", pokemonId);
-  }, [pokemonId]);
+  // useEffect(() => {
+  //   console.log("Valor actual de pokemonId:", pokemonId);
+  // }, [pokemonId]);
 
   // useEffect(() => {
   //   console.log("Valor actual de typeid:", type);
@@ -89,10 +87,14 @@ function Crear() {
   //   console.log('clickIdPokemon=', pokemonId)
   //   console.log('type=', typeId)
   // };
-  
+
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     // setFile(file);
+    if (!file.type.startsWith("image/")) {
+      setMessage("Por favor seleccione un archivo de imagen válido");
+      return;
+      }
     const formData = new FormData();
     formData.append("file", file);
     console.log("formData", formData);
@@ -113,6 +115,19 @@ function Crear() {
       console.log("Error al hacer la petición:", error);
     }
   };
+
+  const isFormValid = () => {
+    return (
+    name &&
+    vida &&
+    ataque &&
+    defensa &&
+    velocidad &&
+    altura &&
+    peso &&
+    file
+    );
+   };
 
   return (
     <div className={css.section}>
@@ -164,15 +179,16 @@ function Crear() {
           <select>
             {Array.isArray(types) &&
               types.map((type, index) => (
-                <option key={index} >
-                  {type.name}
-                </option>
+                <option key={index}>{type.name}</option>
               ))}
-              {/* onClick={() => handleTypeClick(type)}> */}
+            {/* onClick={() => handleTypeClick(type)}> */}
           </select>
         </div>
-        <button className={css.submit} type="submit">Crear</button>
+        <button className={css.submit} type="submit" disabled={!isFormValid()}>
+          Crear
+        </button>
       </form>
+      {message && <p>{message}</p>}
     </div>
   );
 }
