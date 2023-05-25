@@ -12,6 +12,10 @@
     padding: .6rem;
     font-family: 'Roboto Condensed', sans-serif;
    }
+
+   button{
+    cursor: pointer;
+   }
    
    img{
     object-fit: contain;

@@ -13,6 +13,10 @@ const getAllPokemons = async (name, offset, limit) => {
         id: pokemonData.id,
         image: pokemonData.sprites.other['official-artwork'].front_default,
         name: pokemonData.name,
+        life: pokemonData.stats.find((stat) => stat.stat.name === "hp").base_stat,
+        attack: pokemonData.stats.find((stat) => stat.stat.name === "attack").base_stat,
+        defense: pokemonData.stats.find((stat) => stat.stat.name === "defense").base_stat,
+        speed: pokemonData.stats.find((stat) => stat.stat.name === "speed").base_stat,
         height: pokemonData.height,
         weight: pokemonData.weight,
         types: pokemonData.types.map(typeObj => typeObj.type.name)

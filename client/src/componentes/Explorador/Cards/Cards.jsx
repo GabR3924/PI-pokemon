@@ -16,18 +16,16 @@ const Cards = ({ results }) => {
       <div className={css.Cards}>
         {console.log(results)}
         {results &&
-          results.pokemons.map(({ id, name, image, height, weight, types }) => (
+          results.pokemons.map(({ id, name, image,life, attack,defense, speed, height, weight, types }) => (
             <Card
               key={id}
               id={id}
               name={name}
               image={image}
-              height={height}
-              weight={weight}
               types={types}
               onOpenModal={() => {
                 handleOpenModal();
-                setSelectedPokemon({ name, image,height, types });
+                setSelectedPokemon({ id, name, image,life, attack,defense, speed, height, weight, types });
               }}
               onCloseModal={handleCloseModal}
             />
@@ -36,9 +34,15 @@ const Cards = ({ results }) => {
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         {selectedPokemon && (
           <CardDetail
+            id={selectedPokemon.id}
             name={selectedPokemon.name}
             image={selectedPokemon.image}
+            vida={selectedPokemon.life}
+            ataque={selectedPokemon.attack}
+            defensa={selectedPokemon.defense}
+            velocidad={selectedPokemon.speed}
             altura={selectedPokemon.height}
+            peso={selectedPokemon.weight}
             types={selectedPokemon.types}
           />
         )}
