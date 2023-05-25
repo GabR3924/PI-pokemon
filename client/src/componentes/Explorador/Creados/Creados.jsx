@@ -35,7 +35,7 @@ const Creados = () => {
         <div className={css.db}>
           {/* {console.log(pokemons)} */}
           {Array.isArray(pokemons) &&
-            pokemons.map(({ id, name, image }) => (
+            pokemons.map(({ id, name, image, vida,ataque, defensa,velocidad,altura,peso }) => (
               <Card
                 key={id}
                 id={id}
@@ -43,7 +43,7 @@ const Creados = () => {
                 image={image}
                 onOpenModal={() => {
                   handleOpenModal();
-                  setSelectedPokemon({ name, image });
+                  setSelectedPokemon({ name, image, vida,ataque, defensa,velocidad,altura,peso });
                 }}
                 onCloseModal={handleCloseModal}
               />
@@ -54,6 +54,12 @@ const Creados = () => {
             <CardDetail
               name={selectedPokemon.name}
               image={selectedPokemon.image}
+              vida={selectedPokemon.vida}
+              ataque={selectedPokemon.ataque}
+               defensa={selectedPokemon.defensa}
+               velocidad={selectedPokemon.velocidad}
+               altura={selectedPokemon.altura}
+               peso={selectedPokemon.peso}
             />
           )}
         </Modal>

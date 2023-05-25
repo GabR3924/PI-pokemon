@@ -27,7 +27,7 @@ const Cards = ({ results }) => {
               types={types}
               onOpenModal={() => {
                 handleOpenModal();
-                setSelectedPokemon({ name, image, types });
+                setSelectedPokemon({ name, image,height, types });
               }}
               onCloseModal={handleCloseModal}
             />
@@ -38,6 +38,7 @@ const Cards = ({ results }) => {
           <CardDetail
             name={selectedPokemon.name}
             image={selectedPokemon.image}
+            altura={selectedPokemon.height}
             types={selectedPokemon.types}
           />
         )}
