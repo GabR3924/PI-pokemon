@@ -40,7 +40,7 @@ const uploadFile = async (file) => {
 
 const getDbPokemons = async () => {
   const pokemons = await Pokemon.findAll();
-
+  // console.log('idPOkemon=', pokemons)
   return { data: pokemons };
 };
 

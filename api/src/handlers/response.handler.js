@@ -42,7 +42,7 @@ const create = async (req, res, next) => {
   const { name, image, vida, ataque, defensa, velocidad, altura, peso } =
     req.body;
   // const image = req.file
-  console.log("backIMG=", image);
+  // console.log("backIMG=", image);
 
   try {
     const createPok = await createPokemon(
@@ -64,7 +64,7 @@ const create = async (req, res, next) => {
 
 const upload = async (req, res, next) => {
   const file = req.file;
-  console.log("img", file);
+  // console.log("img", file);
   try {
     if (!file || !file.path) {
       console.log(
@@ -76,7 +76,7 @@ const upload = async (req, res, next) => {
       return;
     }
     const response = await uploadFile(file);
-    console.log("imageurl", response.imageUrl);
+    // console.log("imageurl", response.imageUrl);
     res.json(response.imageUrl);
   } catch (error) {
     next(error);
@@ -87,7 +87,7 @@ const getTypes = async (req, res, next) => {
   try {
     const response = await getAllTypes();
     const types = response.types.map((type) => ({ name: type.name, id: type.id }));
-    console.log(types);
+    // console.log(types);
 
     res.json(types);
   } catch (error) {

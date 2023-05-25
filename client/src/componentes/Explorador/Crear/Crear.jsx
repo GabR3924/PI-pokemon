@@ -13,6 +13,7 @@ function Crear() {
   const [peso, setPeso] = useState("");
   const [message, setMessage] = useState("");
   const [types, setTypes] = useState([]);
+  const [pokemonId, setPokemonId] = useState(null);
 
   useEffect(() => {
     const getTypes = async () => {
@@ -64,19 +65,34 @@ function Crear() {
 
     console.log("formData", formData);
 
-    await axios.post("http://localhost:3001/pokemon/new", formData, {
+    const response = await axios.post("http://localhost:3001/pokemon/new", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+    setPokemonId(response.data.data.id);
     setMessage("Pokémon creado correctamente");
   };
 
-  const handleTypeClick = async () => {};
+  useEffect(() => {
+    console.log("Valor actual de pokemonId:", pokemonId);
+  }, [pokemonId]);
 
+  // useEffect(() => {
+  //   console.log("Valor actual de typeid:", type);
+  // }, [pokemonId]);
+
+  // const handleTypeClick = async (type, pokemonId) => {
+  //   const typeId = type;
+
+  //   await axios.post('http://localhost:3001/pokemon/addType', { pokemonId, typeId });
+  //   console.log('clickIdPokemon=', pokemonId)
+  //   console.log('type=', typeId)
+  // };
+  
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    setFile(file);
+    // setFile(file);
     const formData = new FormData();
     formData.append("file", file);
     console.log("formData", formData);
@@ -148,10 +164,11 @@ function Crear() {
           <select>
             {Array.isArray(types) &&
               types.map((type, index) => (
-                <option key={index} onClick={() => handleTypeClick(type)}>
+                <option key={index} >
                   {type.name}
                 </option>
               ))}
+              {/* onClick={() => handleTypeClick(type)}> */}
           </select>
         </div>
         <button className={css.submit} type="submit">Crear</button>
