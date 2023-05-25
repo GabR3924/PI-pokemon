@@ -5,7 +5,7 @@ const {
   getDbPokemons,
   uploadFile,
 } = require("../controllers/crud.controller.js");
-const getAllTypes = require("../controllers/getAllTypes.controller.js");
+const {getAllTypes, pokemonTypes} = require("../controllers/getAllTypes.controller.js");
 
 const getAll = async (req, res, next) => {
   const { name, offset, limit } = req.query;
@@ -86,14 +86,25 @@ const upload = async (req, res, next) => {
 const getTypes = async (req, res, next) => {
   try {
     const response = await getAllTypes();
-    const types = response.types.map((type) => type.name);
-    // console.log(types);
+    const types = response.types.map((type) => ({ name: type.name, id: type.id }));
+    console.log(types);
 
     res.json(types);
   } catch (error) {
     next(error);
   }
 };
+
+const postPokemonTypes = async (req, res, next) => {
+  const {pokemonId, typeId} = req.body
+  try {
+    const response = await pokemonTypes(pokemonId, typeId)
+    res.json({ message: "Tipo añadido correctamente" });
+
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports = {
   getAll,
@@ -102,4 +113,5 @@ module.exports = {
   create,
   getTypes,
   upload,
+  postPokemonTypes
 };

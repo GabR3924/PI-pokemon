@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Types } = require('../db.js');
+const { Types, PokemonType } = require('../db.js');
 
 const getAllTypes = async () => {
   const apiResponse = await axios.get('https://pokeapi.co/api/v2/type');
@@ -13,4 +13,10 @@ const getAllTypes = async () => {
 
 }
 
-module.exports= getAllTypes;
+const pokemonTypes = async (pokemonId, typeId) => {
+  const pokeType = await PokemonType.create({ pokemonId, typeId })
+  console.log("pokeType=", pokeType)
+  return ('tipo añadido correctamente')
+}
+
+module.exports= {getAllTypes, pokemonTypes};

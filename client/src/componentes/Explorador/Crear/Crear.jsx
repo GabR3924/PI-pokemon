@@ -149,7 +149,7 @@ function Crear() {
             {Array.isArray(types) &&
               types.map((type, index) => (
                 <option key={index} onClick={() => handleTypeClick(type)}>
-                  {type}
+                  {type.name}
                 </option>
               ))}
           </select>
