@@ -15,7 +15,7 @@ const Cards = ({ results }) => {
     <div className={css.section}>
       <div className={css.Cards}>
         {console.log(results)}
-        {results &&
+        {results && results.pokemons &&
           results.pokemons.map(({ id, name, image,life, attack,defense, speed, height, weight, types }) => (
             <Card
               key={id}

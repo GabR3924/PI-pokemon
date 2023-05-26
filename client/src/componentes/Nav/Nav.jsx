@@ -1,6 +1,7 @@
 import React from 'react'
 import css from './Nav.module.css'
 import {MdOutlineCatchingPokemon} from 'react-icons/md'
+import {Link} from 'react-router-dom'
 
 
 const Nav = () => {
@@ -11,8 +12,8 @@ const Nav = () => {
       
     </div>
     <ul className={css.list}>
-        <li>Home</li>
-        <li>Creados</li>
+        <li><Link to='/home'>home</Link></li>
+        <li><Link to='/creados'>Creados</Link></li>
         
     </ul>
     </div>

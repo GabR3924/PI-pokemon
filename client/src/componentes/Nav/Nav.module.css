@@ -31,3 +31,7 @@
     list-style: none;
 }
 
+.list a{
+    color: #140000;
+    cursor: pointer;
+}

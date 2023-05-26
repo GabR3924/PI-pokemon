@@ -12,6 +12,8 @@ function App() {
   const [results, setResults] = useState(null);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filters, setFilters] = useState({});
+
 
   useEffect(() => {
     handleSearch(searchQuery);
@@ -25,7 +27,33 @@ function App() {
     if (query) {
       url += `&name=${query}`;
     }
-    axios.get(url).then((response) => setResults(response.data));
+    axios.get(url).then((response) => {
+      const filteredResults = filterResults(response.data, filters);
+      setResults(filteredResults)
+      // setResults(response.data)
+    });
+  };
+
+  useEffect(() => {
+    console.log("Valor actual de results:", results);
+  }, [results]);
+
+  const filterResults = (results, filters) => {
+    console.log('filterResults', results, filters);
+
+    let filteredResults = results;
+   
+    if (filters.orderBy === 'name') {
+      console.log('filtering by name');
+      filteredResults = Object.values(filteredResults);
+      filteredResults.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (filters.orderBy === 'type') {
+      console.log('filtering by type');
+      filteredResults = Object.values(filteredResults);
+      filteredResults.sort((a, b) => a.type.name.localeCompare(b.type.name));
+    }
+  
+    return filteredResults;
   };
 
   return (
@@ -41,6 +69,8 @@ function App() {
                 results={results}
                 page={page}
                 setPage={setPage}
+                filters={filters}
+                setFilters={setFilters}
               />
             }
           />
