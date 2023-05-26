@@ -53,6 +53,7 @@ const Creados = () => {
           <button onClick={handleOpenCreateModal}>Crear</button>
         </div>
         <div className={css.db}>
+          {console.log('pokemons', pokemons)}
           {Array.isArray(pokemons) &&
             pokemons.map(({ id, name, image, vida, ataque, defensa, velocidad, altura, peso }) => (
               <Card
@@ -72,6 +73,7 @@ const Creados = () => {
           {selectedPokemon && (
             <>
               <CardDetail
+              key={selectedPokemon.id}
               id={selectedPokemon.id}
                 name={selectedPokemon.name}
                 image={selectedPokemon.image}
@@ -83,7 +85,8 @@ const Creados = () => {
                 peso={selectedPokemon.peso}
               />
               <button onClick={() => handleDeletePokemon(selectedPokemon.id)}>Eliminar</button>
-              <button onClick={() => handleUpdatePokemon(selectedPokemon.id)}>Actualizar</button>
+{              console.log('idpokemon',selectedPokemon.id)
+}              <button onClick={() => handleUpdatePokemon(selectedPokemon.id)}>Actualizar</button>
             </>
           )}
         </Modal>
