@@ -25,6 +25,26 @@ const Creados = () => {
     });
   }, []);
 
+  const handleDeletePokemon = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/pokemon/${id}`);
+      setPokemons(pokemons.filter((pokemon) => pokemon.id !== id));
+      handleCloseModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdatePokemon = async (id, updates) => {
+    try {
+      const response = await axios.put(`http://localhost:3001/pokemon/${id}`, updates);
+      setPokemons(pokemons.map((pokemon) => pokemon.id === id ? response.data : pokemon));
+      handleCloseModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={css.section}>
       <Nav />
@@ -33,9 +53,8 @@ const Creados = () => {
           <button onClick={handleOpenCreateModal}>Crear</button>
         </div>
         <div className={css.db}>
-          {/* {console.log(pokemons)} */}
           {Array.isArray(pokemons) &&
-            pokemons.map(({ id, name, image, vida,ataque, defensa,velocidad,altura,peso }) => (
+            pokemons.map(({ id, name, image, vida, ataque, defensa, velocidad, altura, peso }) => (
               <Card
                 key={id}
                 id={id}
@@ -43,7 +62,7 @@ const Creados = () => {
                 image={image}
                 onOpenModal={() => {
                   handleOpenModal();
-                  setSelectedPokemon({ name, image, vida,ataque, defensa,velocidad,altura,peso });
+                  setSelectedPokemon({ id, name, image, vida, ataque, defensa, velocidad, altura, peso });
                 }}
                 onCloseModal={handleCloseModal}
               />
@@ -51,16 +70,21 @@ const Creados = () => {
         </div>
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           {selectedPokemon && (
-            <CardDetail
-              name={selectedPokemon.name}
-              image={selectedPokemon.image}
-              vida={selectedPokemon.vida}
-              ataque={selectedPokemon.ataque}
-               defensa={selectedPokemon.defensa}
-               velocidad={selectedPokemon.velocidad}
-               altura={selectedPokemon.altura}
-               peso={selectedPokemon.peso}
-            />
+            <>
+              <CardDetail
+              id={selectedPokemon.id}
+                name={selectedPokemon.name}
+                image={selectedPokemon.image}
+                vida={selectedPokemon.vida}
+                ataque={selectedPokemon.ataque}
+                defensa={selectedPokemon.defensa}
+                velocidad={selectedPokemon.velocidad}
+                altura={selectedPokemon.altura}
+                peso={selectedPokemon.peso}
+              />
+              <button onClick={() => handleDeletePokemon(selectedPokemon.id)}>Eliminar</button>
+              <button onClick={() => handleUpdatePokemon(selectedPokemon.id)}>Actualizar</button>
+            </>
           )}
         </Modal>
         <Modal isOpen={isCreateModalOpen} onClose={handleCloseCreateModal}>

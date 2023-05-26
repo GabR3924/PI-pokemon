@@ -4,6 +4,8 @@ const {
   createPokemon,
   getDbPokemons,
   uploadFile,
+  deletePokemon,
+  updatePokemon
 } = require("../controllers/crud.controller.js");
 const {getAllTypes, pokemonTypes} = require("../controllers/getAllTypes.controller.js");
 
@@ -83,6 +85,28 @@ const upload = async (req, res, next) => {
   }
 };
 
+const deleteP = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const response = await deletePokemon(id);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const update = async (req, res, next) => {
+  const { id } = req.params;
+  const updates = req.body;
+  try {
+    const response = await updatePokemon(id, updates);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 const getTypes = async (req, res, next) => {
   try {
     const response = await getAllTypes();
@@ -113,5 +137,7 @@ module.exports = {
   create,
   getTypes,
   upload,
-  postPokemonTypes
+  postPokemonTypes,
+  deleteP,
+  update
 };

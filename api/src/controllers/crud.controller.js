@@ -67,8 +67,32 @@ const createPokemon = async (
   return { data: newPokemon };
 };
 
+const deletePokemon = async (id) => {
+  
+     await Pokemon.destroy({
+      where: { id }
+    });
+    return { message: 'Pokemon deleted successfully' };
+  
+};
+
+const updatePokemon = async (id, updates) => {
+ 
+    const [updatedRowsCount, updatedRows] = await Pokemon.update(updates, {
+      where: { id },
+      returning: true
+    });
+    if (updatedRowsCount === 0) {
+      return { message: 'No Pokemon found with the given id' };
+    }
+    return { data: updatedRows[0] };
+};
+
+
 module.exports = {
   getDbPokemons,
   createPokemon,
   uploadFile,
+  deletePokemon,
+  updatePokemon
 };

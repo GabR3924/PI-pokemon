@@ -14,6 +14,7 @@ const CardDetail = ({ id, name, image, vida, ataque, defensa,velocidad,altura,pe
       <h2>altura  <br /> {altura}</h2>
       <h2>peso <br /> {peso}</h2>
       <h2>Tipo <br /> {types ? types.join(', ') : ''}</h2>
+       
     </div>
   );
 };

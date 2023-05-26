@@ -2,12 +2,12 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     font-family: 'Roboto Condensed', sans-serif;
-    margin: 3rem;
+    margin: 2rem;
     justify-content: center;
 }
 
 .section img{
-    max-width: 14rem;
+    max-width: 10rem;
 }
 
 h1, h2{
